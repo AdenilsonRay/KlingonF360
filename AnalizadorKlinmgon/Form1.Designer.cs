@@ -31,8 +31,14 @@
             this.sairButton = new System.Windows.Forms.Button();
             this.preposicoesButton = new System.Windows.Forms.Button();
             this.verbosButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.numerosButton = new System.Windows.Forms.Button();
             this.selecaoTextoButton = new System.Windows.Forms.Button();
+            this.vocabularioButton = new System.Windows.Forms.Button();
+            this.limparButton = new System.Windows.Forms.Button();
+            this.textoSelecionadoTextBox = new System.Windows.Forms.TextBox();
+            this.resultadoTextBox = new System.Windows.Forms.TextBox();
+            this.textoSelecionadoLabel = new System.Windows.Forms.Label();
+            this.resultadoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sairButton
@@ -43,6 +49,7 @@
             this.sairButton.TabIndex = 0;
             this.sairButton.Text = "Sair";
             this.sairButton.UseVisualStyleBackColor = true;
+            this.sairButton.Click += new System.EventHandler(this.SairButton_Click);
             // 
             // preposicoesButton
             // 
@@ -62,14 +69,14 @@
             this.verbosButton.Text = "Teste dos Verbos";
             this.verbosButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // numerosButton
             // 
-            this.button4.Location = new System.Drawing.Point(578, 415);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.numerosButton.Location = new System.Drawing.Point(474, 415);
+            this.numerosButton.Name = "numerosButton";
+            this.numerosButton.Size = new System.Drawing.Size(108, 23);
+            this.numerosButton.TabIndex = 3;
+            this.numerosButton.Text = "Teste dos Números";
+            this.numerosButton.UseVisualStyleBackColor = true;
             // 
             // selecaoTextoButton
             // 
@@ -80,19 +87,87 @@
             this.selecaoTextoButton.Text = "Seleção de Texto";
             this.selecaoTextoButton.UseVisualStyleBackColor = true;
             // 
+            // vocabularioButton
+            // 
+            this.vocabularioButton.Location = new System.Drawing.Point(349, 415);
+            this.vocabularioButton.Name = "vocabularioButton";
+            this.vocabularioButton.Size = new System.Drawing.Size(119, 23);
+            this.vocabularioButton.TabIndex = 5;
+            this.vocabularioButton.Text = "Teste de Vocabulário";
+            this.vocabularioButton.UseVisualStyleBackColor = true;
+            // 
+            // limparButton
+            // 
+            this.limparButton.Location = new System.Drawing.Point(632, 415);
+            this.limparButton.Name = "limparButton";
+            this.limparButton.Size = new System.Drawing.Size(75, 23);
+            this.limparButton.TabIndex = 6;
+            this.limparButton.Text = "Limpar";
+            this.limparButton.UseVisualStyleBackColor = true;
+            // 
+            // textoSelecionadoTextBox
+            // 
+            this.textoSelecionadoTextBox.Location = new System.Drawing.Point(12, 32);
+            this.textoSelecionadoTextBox.Multiline = true;
+            this.textoSelecionadoTextBox.Name = "textoSelecionadoTextBox";
+            this.textoSelecionadoTextBox.ReadOnly = true;
+            this.textoSelecionadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textoSelecionadoTextBox.Size = new System.Drawing.Size(474, 377);
+            this.textoSelecionadoTextBox.TabIndex = 7;
+            // 
+            // resultadoTextBox
+            // 
+            this.resultadoTextBox.Location = new System.Drawing.Point(493, 32);
+            this.resultadoTextBox.Multiline = true;
+            this.resultadoTextBox.Name = "resultadoTextBox";
+            this.resultadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.resultadoTextBox.Size = new System.Drawing.Size(295, 377);
+            this.resultadoTextBox.TabIndex = 8;
+            // 
+            // textoSelecionadoLabel
+            // 
+            this.textoSelecionadoLabel.AutoSize = true;
+            this.textoSelecionadoLabel.Location = new System.Drawing.Point(9, 13);
+            this.textoSelecionadoLabel.Name = "textoSelecionadoLabel";
+            this.textoSelecionadoLabel.Size = new System.Drawing.Size(99, 13);
+            this.textoSelecionadoLabel.TabIndex = 9;
+            this.textoSelecionadoLabel.Text = "Texto Selecionado:";
+            // 
+            // resultadoLabel
+            // 
+            this.resultadoLabel.AutoSize = true;
+            this.resultadoLabel.Location = new System.Drawing.Point(493, 13);
+            this.resultadoLabel.Name = "resultadoLabel";
+            this.resultadoLabel.Size = new System.Drawing.Size(118, 13);
+            this.resultadoLabel.TabIndex = 10;
+            this.resultadoLabel.Text = "Resultado do Teste de:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.resultadoLabel);
+            this.Controls.Add(this.textoSelecionadoLabel);
+            this.Controls.Add(this.resultadoTextBox);
+            this.Controls.Add(this.textoSelecionadoTextBox);
+            this.Controls.Add(this.limparButton);
+            this.Controls.Add(this.vocabularioButton);
             this.Controls.Add(this.selecaoTextoButton);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.numerosButton);
             this.Controls.Add(this.verbosButton);
             this.Controls.Add(this.preposicoesButton);
             this.Controls.Add(this.sairButton);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(816, 489);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Teste Klingon F360";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,8 +176,14 @@
         private System.Windows.Forms.Button sairButton;
         private System.Windows.Forms.Button preposicoesButton;
         private System.Windows.Forms.Button verbosButton;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button numerosButton;
         private System.Windows.Forms.Button selecaoTextoButton;
+        private System.Windows.Forms.Button vocabularioButton;
+        private System.Windows.Forms.Button limparButton;
+        private System.Windows.Forms.TextBox textoSelecionadoTextBox;
+        private System.Windows.Forms.TextBox resultadoTextBox;
+        private System.Windows.Forms.Label textoSelecionadoLabel;
+        private System.Windows.Forms.Label resultadoLabel;
     }
 }
 
