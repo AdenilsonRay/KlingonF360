@@ -13,13 +13,24 @@ namespace AnalizadorKlingon
 {
     public partial class Form1 : Form
     {
+        #region Variaveis de classe/Construtor
+
+        // Variaveis de Classe
+        AnalizadorK analizadorObj = new AnalizadorK();
+
         public Form1()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Eventos
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Focando no botao selecionar arquivo
+            selecaoTextoButton.Focus();
         }
 
         private void SairButton_Click(object sender, EventArgs e)
@@ -36,6 +47,8 @@ namespace AnalizadorKlingon
             //Se resposta nao cancela fechamento do sistema
             if (FinalizarSistema == DialogResult.No)
                 e.Cancel = true;
+
+            selecaoTextoButton.Focus();
         }
 
         private void SelecaoTextoButton_Click(object sender, EventArgs e)
@@ -69,20 +82,26 @@ namespace AnalizadorKlingon
 
         private void PreposicoesButton_Click(object sender, EventArgs e)
         {
-            AnalizadorK ak = new AnalizadorK();
-            ak.Selecionar_Preposicoes_Klingon(textoSelecionadoTextBox.Text);
+            // Iniciando classe analizadadora
+            resultadoTextBox.Text = analizadorObj.Selecionar_Preposicoes_Klingon(textoSelecionadoTextBox.Text);
 
+            // Informando tipo de analize
             resultadoLabel.Text = "Resultado do Teste de: PREPOSIÇÕES";
 
+            // Informando resultado
             textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
         }
 
         private void LimparButton_Click(object sender, EventArgs e)
         {
-            LimpandoTela();
+            Limpando_Tela();
         }
 
-        private void LimpandoTela()
+        #endregion
+
+        #region Funções
+
+        private void Limpando_Tela()
         {
             resultadoLabel.Text = "Resultado do Teste de:";
             textoSelecionadoLabel.Text = "Texto Selecionado:";
@@ -90,5 +109,7 @@ namespace AnalizadorKlingon
             resultadoTextBox.Text = string.Empty;
             selecaoTextoButton.Focus();
         }
+
+        #endregion
     }
 }

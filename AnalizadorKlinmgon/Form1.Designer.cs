@@ -47,7 +47,7 @@
             this.sairButton.Location = new System.Drawing.Point(713, 415);
             this.sairButton.Name = "sairButton";
             this.sairButton.Size = new System.Drawing.Size(75, 23);
-            this.sairButton.TabIndex = 0;
+            this.sairButton.TabIndex = 9;
             this.sairButton.Text = "Sair";
             this.sairButton.UseVisualStyleBackColor = true;
             this.sairButton.Click += new System.EventHandler(this.SairButton_Click);
@@ -57,7 +57,7 @@
             this.preposicoesButton.Location = new System.Drawing.Point(118, 415);
             this.preposicoesButton.Name = "preposicoesButton";
             this.preposicoesButton.Size = new System.Drawing.Size(120, 23);
-            this.preposicoesButton.TabIndex = 1;
+            this.preposicoesButton.TabIndex = 4;
             this.preposicoesButton.Text = "Teste de Preposições";
             this.preposicoesButton.UseVisualStyleBackColor = true;
             this.preposicoesButton.Click += new System.EventHandler(this.PreposicoesButton_Click);
@@ -67,7 +67,7 @@
             this.verbosButton.Location = new System.Drawing.Point(244, 415);
             this.verbosButton.Name = "verbosButton";
             this.verbosButton.Size = new System.Drawing.Size(99, 23);
-            this.verbosButton.TabIndex = 2;
+            this.verbosButton.TabIndex = 5;
             this.verbosButton.Text = "Teste dos Verbos";
             this.verbosButton.UseVisualStyleBackColor = true;
             // 
@@ -76,7 +76,7 @@
             this.numerosButton.Location = new System.Drawing.Point(474, 415);
             this.numerosButton.Name = "numerosButton";
             this.numerosButton.Size = new System.Drawing.Size(108, 23);
-            this.numerosButton.TabIndex = 3;
+            this.numerosButton.TabIndex = 7;
             this.numerosButton.Text = "Teste dos Números";
             this.numerosButton.UseVisualStyleBackColor = true;
             // 
@@ -85,7 +85,7 @@
             this.selecaoTextoButton.Location = new System.Drawing.Point(12, 415);
             this.selecaoTextoButton.Name = "selecaoTextoButton";
             this.selecaoTextoButton.Size = new System.Drawing.Size(100, 23);
-            this.selecaoTextoButton.TabIndex = 4;
+            this.selecaoTextoButton.TabIndex = 1;
             this.selecaoTextoButton.Text = "Seleção de Texto";
             this.selecaoTextoButton.UseVisualStyleBackColor = true;
             this.selecaoTextoButton.Click += new System.EventHandler(this.SelecaoTextoButton_Click);
@@ -95,7 +95,7 @@
             this.vocabularioButton.Location = new System.Drawing.Point(349, 415);
             this.vocabularioButton.Name = "vocabularioButton";
             this.vocabularioButton.Size = new System.Drawing.Size(119, 23);
-            this.vocabularioButton.TabIndex = 5;
+            this.vocabularioButton.TabIndex = 6;
             this.vocabularioButton.Text = "Teste de Vocabulário";
             this.vocabularioButton.UseVisualStyleBackColor = true;
             // 
@@ -104,7 +104,7 @@
             this.limparButton.Location = new System.Drawing.Point(632, 415);
             this.limparButton.Name = "limparButton";
             this.limparButton.Size = new System.Drawing.Size(75, 23);
-            this.limparButton.TabIndex = 6;
+            this.limparButton.TabIndex = 8;
             this.limparButton.Text = "Limpar";
             this.limparButton.UseVisualStyleBackColor = true;
             this.limparButton.Click += new System.EventHandler(this.LimparButton_Click);
@@ -117,7 +117,7 @@
             this.textoSelecionadoTextBox.ReadOnly = true;
             this.textoSelecionadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textoSelecionadoTextBox.Size = new System.Drawing.Size(474, 377);
-            this.textoSelecionadoTextBox.TabIndex = 7;
+            this.textoSelecionadoTextBox.TabIndex = 2;
             // 
             // resultadoTextBox
             // 
@@ -126,7 +126,7 @@
             this.resultadoTextBox.Name = "resultadoTextBox";
             this.resultadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.resultadoTextBox.Size = new System.Drawing.Size(295, 377);
-            this.resultadoTextBox.TabIndex = 8;
+            this.resultadoTextBox.TabIndex = 3;
             // 
             // textoSelecionadoLabel
             // 

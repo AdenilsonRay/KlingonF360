@@ -25,7 +25,7 @@ namespace AnalizadorKlingon
 
         public AnalizadorK()
         {
-            this.letrasBar = new string[] {"a","b","c","d","e","g","h","i","j","m","n","o","q","r","t","u","v","x","y","z"};
+            this.letrasBar = new string[] {"a","b","c","d","e","g","h","i","j","m","n","o","p","q","r","t","u","v","x","y","z"};
             this.letrasFoo = new string[] {"s","l","f","w","k"};
             this.alfabetoKlingon = new string[] {"k","b","w","r","q","d","n","f","x","j","m","l","h","t","c","g","z","p","s"};
         }
