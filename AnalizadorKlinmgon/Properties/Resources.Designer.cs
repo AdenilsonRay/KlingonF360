@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnalizadorKlinmgon.Properties
+namespace AnalizadorKlingon.Properties
 {
 
 

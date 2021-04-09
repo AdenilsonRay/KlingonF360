@@ -1,4 +1,4 @@
-﻿namespace AnalizadorKlinmgon
+﻿namespace AnalizadorKlingon
 {
     partial class Form1
     {
@@ -39,6 +39,7 @@
             this.resultadoTextBox = new System.Windows.Forms.TextBox();
             this.textoSelecionadoLabel = new System.Windows.Forms.Label();
             this.resultadoLabel = new System.Windows.Forms.Label();
+            this.textoKlingonOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // sairButton
@@ -59,6 +60,7 @@
             this.preposicoesButton.TabIndex = 1;
             this.preposicoesButton.Text = "Teste de Preposições";
             this.preposicoesButton.UseVisualStyleBackColor = true;
+            this.preposicoesButton.Click += new System.EventHandler(this.PreposicoesButton_Click);
             // 
             // verbosButton
             // 
@@ -86,6 +88,7 @@
             this.selecaoTextoButton.TabIndex = 4;
             this.selecaoTextoButton.Text = "Seleção de Texto";
             this.selecaoTextoButton.UseVisualStyleBackColor = true;
+            this.selecaoTextoButton.Click += new System.EventHandler(this.SelecaoTextoButton_Click);
             // 
             // vocabularioButton
             // 
@@ -104,6 +107,7 @@
             this.limparButton.TabIndex = 6;
             this.limparButton.Text = "Limpar";
             this.limparButton.UseVisualStyleBackColor = true;
+            this.limparButton.Click += new System.EventHandler(this.LimparButton_Click);
             // 
             // textoSelecionadoTextBox
             // 
@@ -141,6 +145,14 @@
             this.resultadoLabel.Size = new System.Drawing.Size(118, 13);
             this.resultadoLabel.TabIndex = 10;
             this.resultadoLabel.Text = "Resultado do Teste de:";
+            // 
+            // textoKlingonOpenFileDialog
+            // 
+            this.textoKlingonOpenFileDialog.Filter = "Texto (txt;*.txt)|*.txt| Todos os arquivos (* *)|* *";
+            this.textoKlingonOpenFileDialog.InitialDirectory = "@\"Bibliotecas\"";
+            this.textoKlingonOpenFileDialog.ReadOnlyChecked = true;
+            this.textoKlingonOpenFileDialog.RestoreDirectory = true;
+            this.textoKlingonOpenFileDialog.ShowReadOnly = true;
             // 
             // Form1
             // 
@@ -184,6 +196,7 @@
         private System.Windows.Forms.TextBox resultadoTextBox;
         private System.Windows.Forms.Label textoSelecionadoLabel;
         private System.Windows.Forms.Label resultadoLabel;
+        private System.Windows.Forms.OpenFileDialog textoKlingonOpenFileDialog;
     }
 }
 
