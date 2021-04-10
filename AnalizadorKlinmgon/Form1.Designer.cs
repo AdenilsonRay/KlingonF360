@@ -134,7 +134,7 @@
             // textoSelecionadoLabel
             // 
             this.textoSelecionadoLabel.AutoSize = true;
-            this.textoSelecionadoLabel.Location = new System.Drawing.Point(9, 16);
+            this.textoSelecionadoLabel.Location = new System.Drawing.Point(9, 9);
             this.textoSelecionadoLabel.Name = "textoSelecionadoLabel";
             this.textoSelecionadoLabel.Size = new System.Drawing.Size(99, 13);
             this.textoSelecionadoLabel.TabIndex = 9;
@@ -143,7 +143,7 @@
             // resultadoLabel
             // 
             this.resultadoLabel.AutoSize = true;
-            this.resultadoLabel.Location = new System.Drawing.Point(490, 16);
+            this.resultadoLabel.Location = new System.Drawing.Point(490, 9);
             this.resultadoLabel.Name = "resultadoLabel";
             this.resultadoLabel.Size = new System.Drawing.Size(118, 13);
             this.resultadoLabel.TabIndex = 10;
