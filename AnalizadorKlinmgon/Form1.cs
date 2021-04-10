@@ -189,6 +189,12 @@ namespace AnalizadorKlingon
             selecaoTextoButton.Focus();
         }
 
+        private void Limpando_Tela_Resultado()
+        {
+            resultadoLabel.Text = "Resultado do Teste de:";
+            resultadoTextBox.Text = string.Empty;
+        }
+
         #endregion
     }
 }
