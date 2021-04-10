@@ -13,10 +13,10 @@ namespace AnalizadorKlingon
 {
     public partial class Form1 : Form
     {
-        #region Variaveis de classe/Construtor
+        #region Variáveis de classe/Construtor
 
         // Variaveis de Classe
-        AnalizadorK analizadorObj = new AnalizadorK();
+        private readonly AnalizadorK analizadorObj = new AnalizadorK();
 
         public Form1()
         {
@@ -33,12 +33,6 @@ namespace AnalizadorKlingon
             selecaoTextoButton.Focus();
         }
 
-        private void SairButton_Click(object sender, EventArgs e)
-        {
-            //Fechando formulario
-            this.Close();
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //executa menssagem
@@ -48,7 +42,14 @@ namespace AnalizadorKlingon
             if (FinalizarSistema == DialogResult.No)
                 e.Cancel = true;
 
+            //Focando no botao selecionar arquivo
             selecaoTextoButton.Focus();
+        }
+
+        private void SairButton_Click(object sender, EventArgs e)
+        {
+            // Fechando formulario
+            this.Close();
         }
 
         private void SelecaoTextoButton_Click(object sender, EventArgs e)
@@ -98,7 +99,7 @@ namespace AnalizadorKlingon
             }
             else
             {
-                //executa menssagem
+                // executa menssagem foca butão selecao
                 DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 selecaoTextoButton.Focus();
             }
@@ -120,13 +121,13 @@ namespace AnalizadorKlingon
             }
             else
             {
-                //executa menssagem
+                // executa menssagem foca butão selecao
                 DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 selecaoTextoButton.Focus();
             }
         }
 
-private void VocabularioButton_Click(object sender, EventArgs e)
+        private void VocabularioButton_Click(object sender, EventArgs e)
         {
             // Se texto selecionado
             if (textoSelecionadoTextBox.Text.Trim() != String.Empty)
@@ -142,7 +143,7 @@ private void VocabularioButton_Click(object sender, EventArgs e)
             }
             else
             {
-                //executa menssagem
+                // executa menssagem foca butão selecao
                 DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 selecaoTextoButton.Focus();
             }
@@ -164,7 +165,7 @@ private void VocabularioButton_Click(object sender, EventArgs e)
             }
             else
             {
-                //executa menssagem
+                // executa menssagem foca butão selecao
                 DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 selecaoTextoButton.Focus();
             }
@@ -189,6 +190,5 @@ private void VocabularioButton_Click(object sender, EventArgs e)
         }
 
         #endregion
-
     }
 }

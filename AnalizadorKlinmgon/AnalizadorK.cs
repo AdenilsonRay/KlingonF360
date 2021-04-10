@@ -10,7 +10,7 @@ namespace AnalizadorKlingon
 {
     public class AnalizadorK
     {
-        #region  Variaveis classe / Construtor
+        #region  Variáveis classe / Construtor
 
         // Variaveis
         private string[] letrasBar = null;
@@ -30,7 +30,7 @@ namespace AnalizadorKlingon
 
         #endregion
 
-        #region Funcões publicas
+        #region Funções Públicas
         public string Selecionar_Preposicoes_Klingon(string texto)
         {
             // Variaveis local
@@ -50,7 +50,7 @@ namespace AnalizadorKlingon
                     // Percorrer letras da palavra
                     for(int i = 0 ; i < palavra.Length; i++ )
                     {
-                        // Se a letra "d"
+                        // Se ocorre letra "d"
                         if (palavra.Substring(i, 1) == "d")
                         {
                             achou = true;
@@ -64,7 +64,7 @@ namespace AnalizadorKlingon
                         // Percorrer letras bar permitidas
                         foreach (var itemLertra in letrasBar )
                         {
-                            // Se letra permitida iqual a ultima da palavra
+                            // Se ultima letra tipo BAR permitida
                             if (palavra.Substring(2, 1) == itemLertra)
                             {
                                 // Guardar. É uma prepossicao Kligon
@@ -90,7 +90,7 @@ namespace AnalizadorKlingon
             // Particionando texto Klingon
             textoParticionado = Particionar_Texto(texto);
 
-            // Percorrer palavras do texto Klingon
+            // Percorrer palavras do texto
             foreach (var palavra in textoParticionado )
             {
                 bool achou = false;
@@ -114,10 +114,10 @@ namespace AnalizadorKlingon
                     // Se verbo
                     if(achou)
                     {
-                        // Percorrer letras bar permitidas
+                        // Percorrer letras bar
                         foreach (var lertraBAR in letrasBar)
                         {
-                            // Se letra permitida iqual a ultima da palavra
+                            // Se primeira letra tipo BAR
                             if (palavra.Substring(0, 1) == lertraBAR)
                             {
                                 // Guardar. É um verbo na primeira pessoa
@@ -129,7 +129,7 @@ namespace AnalizadorKlingon
                     }
                 }
             }
-            // Adicionando quantidade
+            
             return Verbos + Environment.NewLine +
                   separador + Environment.NewLine +
                   " Total de Verbos => " + contVerbos.ToString() + Environment.NewLine + Environment.NewLine +
@@ -164,7 +164,7 @@ namespace AnalizadorKlingon
                 // Percorre letras da palavra
                 for(int i = 0 ; i <= palavra.Length - 1; i++ )
                 {
-                    // Cria palavra traduzida para portugues
+                    // Traduz letra para portugues
                     novaPalavra += alfabetoReferencia.FirstOrDefault(x => x.Key == palavra.Substring(i, 1)).Value.ToString();
                 }
                 // Adiciona palavra traduzida
@@ -174,20 +174,19 @@ namespace AnalizadorKlingon
             // Ordena palavras klingon pela palavra traduzida
             var dicionarioOrdenado = dicionario.OrderBy(x => x.Value);
 
-            // Percorre, palavras ordenadas klingon para resultado
+            // Percorre palavras ordenadas klingon
             foreach (var palavra in dicionarioOrdenado)
             {
                 resultado += palavra.Key + "  ";
                 contVocabulario++;
             }
 
-            return "Total de Vocabulários é: => " + contVocabulario.ToString() + 
+            return " Total de Vocabulários é: => " + contVocabulario.ToString() + 
                    Environment.NewLine + separador + Environment.NewLine + resultado;
         }
         public string Selecionar_Numeros_Bonitos_Klingon(string texto)
         {
             // Variaveis Local
-            Dictionary<string, Int64> dicionario = new  Dictionary<string, Int64>() { };
             int contNumerosB = 0;
 
             // Particionando texto Klingon
@@ -204,47 +203,49 @@ namespace AnalizadorKlingon
                 // Percorre letras da palavra
                 for (int i = 0 ; i <= palavra.Length - 1; i++ )
                 {
-                    // Recuperando o numeo de localização das letras do alfabeto klingon
+                    // Recuperando numero de posição das letras no alfabeto klingon
                     numerosPalavra.Add(Array.IndexOf(alfabetoKlingon, palavra.Substring(i, 1)));
                 }
 
-                Int64 numeroKlingon = ValorDaPalavra(numerosPalavra);
+                // Calcula valor da palavra
+                Int64 numeroKlingon = Valor_DaPalavra(numerosPalavra);
 
-                if (VeriricarSeNumeroBonito(numeroKlingon))
+                // Seleciona os numeros bonitos
+                if (Verificar_SeNumero_Bonito(numeroKlingon))
                 {
                     resultado += numeroKlingon.ToString() + " ";
                     contNumerosB++;
                 }
             }
-            return "Total de Números Bonitos é: => " + contNumerosB.ToString() +
+            return " Total de Números Bonitos é: => " + contNumerosB.ToString() +
                    Environment.NewLine + separador + Environment.NewLine + resultado;
         }
         #endregion
 
-        #region  Funcões privadas
+        #region  Funções privadas
 
         private string[] Particionar_Texto(string texto)
         {
             return texto.Split(new char[] { ' ' });
         }
 
-        private bool VeriricarSeNumeroBonito(Int64 numero)
+        private bool Verificar_SeNumero_Bonito(Int64 numero)
         {
             // Se numero maior ou iqual e divizivel por 3
-            if (numero >= 440566)
-                if (numero % 3 == 0)
-                    return true;
-                else
-                    return false;
+            if (numero >= 440566 & numero % 3 == 0)
+                return true;
+            else
             return false;
         }
 
-        private Int64 ValorDaPalavra(List<Int64> numerosPalavra)
+        private Int64 Valor_DaPalavra(List<Int64> numerosPalavra)
         {
             Int64 resultado = 0;
+
+            // Calculando para base 20 os numeros
             for (int i = 0; i < numerosPalavra.Count; i++)
             {
-                resultado = resultado + numerosPalavra[i] * (Int64)Math.Pow(20, i);
+                resultado += numerosPalavra[i] * (Int64)Math.Pow(20, i);
             }
             return resultado;
         }
