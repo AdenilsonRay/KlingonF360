@@ -20,20 +20,22 @@ namespace AnalizadorKlingon
         private string resultado = null;
         private String separador = new string('-', 85);
         private string[] textoParticionado = null;
-        private int cont = 0;
-        private int cont1 = 0;
 
         public AnalizadorK()
         {
             this.letrasBar = new string[] {"a","b","c","d","e","g","h","i","j","m","n","o","p","q","r","t","u","v","x","y","z"};
             this.letrasFoo = new string[] {"s","l","f","w","k"};
-            this.alfabetoKlingon = new string[] {"k","b","w","r","q","d","n","f","x","j","m","l","h","t","c","g","z","p","s"};
+            this.alfabetoKlingon = new string[] {"k","b","w","r","q","d","n","f","x","j","m","l","v","h","t","c","g","z","p","s"};
         }
+
         #endregion
 
         #region Funcões publicas
         public string Selecionar_Preposicoes_Klingon(string texto)
         {
+            // Variaveis local
+            int contPreposicao = 0;
+
             // Particionando texto Klingon
             textoParticionado = Particionar_Texto(texto);
 
@@ -66,22 +68,24 @@ namespace AnalizadorKlingon
                             if (palavra.Substring(2, 1) == itemLertra)
                             {
                                 // Guardar. É uma prepossicao Kligon
-                                resultado = resultado + palavra + "  ";
-                                cont++;
+                                resultado += palavra + "  ";
+                                contPreposicao++;
                                 break;
                             }
                         }
                     }
                 }
             }
-            // Adicionando quantidade
-            return resultado + Environment.NewLine + separador + Environment.NewLine + " Total de Preposições => " + cont.ToString(); ;
+            
+            return resultado + Environment.NewLine + separador + Environment.NewLine + " Total de Preposições => " + contPreposicao.ToString(); ;
         }
         public string Selecionar_Verbos_Klingon(string texto)
         {
             // Variaveis locais
             string Verbos = null;
             string VerbosPrimeiraPessoa = null;
+            int contVerbosPP = 0;
+            int contVerbos = 0;
 
             // Particionando texto Klingon
             textoParticionado = Particionar_Texto(texto);
@@ -101,8 +105,8 @@ namespace AnalizadorKlingon
                         if (palavra.Substring(palavra.Length - 1, 1) == letraFOO)
                         {
                             achou = true;
-                            cont++;
-                            Verbos = Verbos + palavra + "  ";
+                            contVerbos++;
+                            Verbos += palavra + "  ";
                             break;
                         }
                     }
@@ -117,8 +121,8 @@ namespace AnalizadorKlingon
                             if (palavra.Substring(0, 1) == lertraBAR)
                             {
                                 // Guardar. É um verbo na primeira pessoa
-                                VerbosPrimeiraPessoa = VerbosPrimeiraPessoa + palavra + "  ";
-                                cont1++;
+                                VerbosPrimeiraPessoa += palavra + "  ";
+                                contVerbosPP++;
                                 break;
                             }
                         }
@@ -126,22 +130,25 @@ namespace AnalizadorKlingon
                 }
             }
             // Adicionando quantidade
-            return Verbos + Environment.NewLine + separador + Environment.NewLine +
-                  VerbosPrimeiraPessoa + Environment.NewLine + separador + Environment.NewLine +
-                " Total de Verbos => " + cont.ToString() + Environment.NewLine +
-                " Total de Verbos Na Primeira Pessoa => " + cont1.ToString();
+            return Verbos + Environment.NewLine +
+                  separador + Environment.NewLine +
+                  " Total de Verbos => " + contVerbos.ToString() + Environment.NewLine + Environment.NewLine +
+                  VerbosPrimeiraPessoa + Environment.NewLine + 
+                  separador + Environment.NewLine +
+                  " Total de Verbos Na Primeira Pessoa => " + contVerbosPP.ToString();
         }
-        public string Selcionar_Vocabulario_Klingon(string texto)
+        public string Selecionar_Vocabulario_Klingon(string texto)
         {
             // Variaveis Local
             var alfabetoReferencia = new Dictionary<string, string>() {
-                { " k " , " a " }, { " b " , " b " }, { " w " , " c " }, { " r " , " d " }, { " q " , " e " },
-                { " d " , " f " }, { " n " , " g " }, { " f " , " h " }, { " x " , " i " }, { " j " , " j " },
-                { " m " , " k " }, { " l " , " l " }, { " v " , " m " }, { " h " , " n " }, { " t " , " o " },
-                { " c " , " p " }, { " g " , " q " }, { " z " , " r " }, { " p " , " s " }, { " s " , " t " }
+                {"k","a"},{"b","b"},{"w","c"},{"r","d"},{"q","e"},
+                {"d","f"},{"n","g"},{"f","h"},{"x","i"},{"j","j"},
+                {"m","k"},{"l","l"},{"v","m"},{"h","n"},{"t","o"},
+                {"c","p"},{"g","q"},{"z","r"},{"p","s"},{"s","t"}
             };
             novaPalavra = string.Empty;
             Dictionary<string, string> dicionario = new Dictionary<string, string>() { };
+            int contVocabulario = 0;
 
             // Particionando texto Klingon
             textoParticionado = Particionar_Texto(texto);
@@ -158,7 +165,7 @@ namespace AnalizadorKlingon
                 for(int i = 0 ; i <= palavra.Length - 1; i++ )
                 {
                     // Cria palavra traduzida para portugues
-                    novaPalavra = novaPalavra + alfabetoReferencia.FirstOrDefault(x => x.Key == palavra.Substring(i, 1)).Value.ToString();
+                    novaPalavra += alfabetoReferencia.FirstOrDefault(x => x.Key == palavra.Substring(i, 1)).Value.ToString();
                 }
                 // Adiciona palavra traduzida
                 dicionario.Add(palavra, novaPalavra);
@@ -170,14 +177,18 @@ namespace AnalizadorKlingon
             // Percorre, palavras ordenadas klingon para resultado
             foreach (var palavra in dicionarioOrdenado)
             {
-                resultado = resultado + palavra.Value + "  ";
+                resultado += palavra.Key + "  ";
+                contVocabulario++;
             }
-            return resultado;
+
+            return "Total de Vocabulários é: => " + contVocabulario.ToString() + 
+                   Environment.NewLine + separador + Environment.NewLine + resultado;
         }
         public string Selecionar_Numeros_Bonitos_Klingon(string texto)
         {
-            List<Int64> numerosPalavra = new List<long>();
+            // Variaveis Local
             Dictionary<string, Int64> dicionario = new  Dictionary<string, Int64>() { };
+            int contNumerosB = 0;
 
             // Particionando texto Klingon
             textoParticionado = Particionar_Texto(texto);
@@ -188,47 +199,56 @@ namespace AnalizadorKlingon
             // Percorre palavras unicas
             foreach (var palavra in textoPalavrasUnicas )
             {
-                novaPalavra = string.Empty;
+                List<Int64> numerosPalavra = new List<Int64>();
 
                 // Percorre letras da palavra
-                for(int i = 0 ; i <= palavra.Length - 1; i++ )
+                for (int i = 0 ; i <= palavra.Length - 1; i++ )
                 {
                     // Recuperando o numeo de localização das letras do alfabeto klingon
                     numerosPalavra.Add(Array.IndexOf(alfabetoKlingon, palavra.Substring(i, 1)));
                 }
 
-                ValorDaPalavra(numerosPalavra);
+                Int64 numeroKlingon = ValorDaPalavra(numerosPalavra);
 
-
-
-                // Adiciona palavra traduzida
-                // dicionario.Add (palavra, novaPalavra);
+                if (VeriricarSeNumeroBonito(numeroKlingon))
+                {
+                    resultado += numeroKlingon.ToString() + " ";
+                    contNumerosB++;
+                }
             }
-
-
-
-
-            return " ";
-        }
-
-        private Int64 ValorDaPalavra(List<long> numerosPalavra)
-        {
-            Int64 resultado = 0;
-            for (int i = 0; i < numerosPalavra.Count; i++)
-            {
-                resultado = resultado + numerosPalavra[i] * 20 ^ numerosPalavra[i];
-            }
-
-
-            return resultado;
+            return "Total de Números Bonitos é: => " + contNumerosB.ToString() +
+                   Environment.NewLine + separador + Environment.NewLine + resultado;
         }
         #endregion
 
         #region  Funcões privadas
+
         private string[] Particionar_Texto(string texto)
         {
             return texto.Split(new char[] { ' ' });
         }
+
+        private bool VeriricarSeNumeroBonito(Int64 numero)
+        {
+            // Se numero maior ou iqual e divizivel por 3
+            if (numero >= 440566)
+                if (numero % 3 == 0)
+                    return true;
+                else
+                    return false;
+            return false;
+        }
+
+        private Int64 ValorDaPalavra(List<Int64> numerosPalavra)
+        {
+            Int64 resultado = 0;
+            for (int i = 0; i < numerosPalavra.Count; i++)
+            {
+                resultado = resultado + numerosPalavra[i] * (Int64)Math.Pow(20, i);
+            }
+            return resultado;
+        }
+
         #endregion
     }
 }

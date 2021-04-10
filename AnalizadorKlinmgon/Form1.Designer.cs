@@ -70,6 +70,7 @@
             this.verbosButton.TabIndex = 5;
             this.verbosButton.Text = "Teste dos Verbos";
             this.verbosButton.UseVisualStyleBackColor = true;
+            this.verbosButton.Click += new System.EventHandler(this.VerbosButton_Click);
             // 
             // numerosButton
             // 
@@ -79,6 +80,7 @@
             this.numerosButton.TabIndex = 7;
             this.numerosButton.Text = "Teste dos Números";
             this.numerosButton.UseVisualStyleBackColor = true;
+            this.numerosButton.Click += new System.EventHandler(this.NumerosButton_Click);
             // 
             // selecaoTextoButton
             // 
@@ -98,6 +100,7 @@
             this.vocabularioButton.TabIndex = 6;
             this.vocabularioButton.Text = "Teste de Vocabulário";
             this.vocabularioButton.UseVisualStyleBackColor = true;
+            this.vocabularioButton.Click += new System.EventHandler(this.VocabularioButton_Click);
             // 
             // limparButton
             // 

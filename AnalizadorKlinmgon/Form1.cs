@@ -55,6 +55,8 @@ namespace AnalizadorKlingon
         {
             try
             {
+                Limpando_Tela();
+
                 //Exibir janela de selecao de arquivo
                 DialogResult dr = this.textoKlingonOpenFileDialog.ShowDialog();
 
@@ -82,14 +84,90 @@ namespace AnalizadorKlingon
 
         private void PreposicoesButton_Click(object sender, EventArgs e)
         {
-            // Iniciando classe analizadadora
-            resultadoTextBox.Text = analizadorObj.Selecionar_Preposicoes_Klingon(textoSelecionadoTextBox.Text);
+            // Se texto selecionado
+            if (textoSelecionadoTextBox.Text.Trim() != String.Empty)
+            {
+                // Selecionando preposições
+                resultadoTextBox.Text = analizadorObj.Selecionar_Preposicoes_Klingon(textoSelecionadoTextBox.Text);
 
-            // Informando tipo de analize
-            resultadoLabel.Text = "Resultado do Teste de: PREPOSIÇÕES";
+                // Informando tipo de analize
+                resultadoLabel.Text = "Resultado do Teste de: PREPOSIÇÕES";
 
-            // Informando resultado
-            textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
+                // Informando resultado
+                textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
+            }
+            else
+            {
+                //executa menssagem
+                DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                selecaoTextoButton.Focus();
+            }
+        }
+
+        private void VerbosButton_Click(object sender, EventArgs e)
+        {
+            // Se texto selecionado
+            if (textoSelecionadoTextBox.Text.Trim() != String.Empty)
+            {
+                // Selcionando verbos
+                resultadoTextBox.Text = analizadorObj.Selecionar_Verbos_Klingon(textoSelecionadoTextBox.Text);
+
+                // Informando tipo de analize
+                resultadoLabel.Text = "Resultado do Teste de: VERBOS";
+
+                // Informando resultado
+                textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
+            }
+            else
+            {
+                //executa menssagem
+                DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                selecaoTextoButton.Focus();
+            }
+        }
+
+private void VocabularioButton_Click(object sender, EventArgs e)
+        {
+            // Se texto selecionado
+            if (textoSelecionadoTextBox.Text.Trim() != String.Empty)
+            {
+                // Selecionando vocabulario
+                resultadoTextBox.Text = analizadorObj.Selecionar_Vocabulario_Klingon(textoSelecionadoTextBox.Text);
+
+                // Informando tipo de analize
+                resultadoLabel.Text = "Resultado do Teste de: VOCABULÁRIOS";
+
+                // Informando resultado
+                textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
+            }
+            else
+            {
+                //executa menssagem
+                DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                selecaoTextoButton.Focus();
+            }
+        }
+
+        private void NumerosButton_Click(object sender, EventArgs e)
+        {
+            // Se texto selecionado
+            if (textoSelecionadoTextBox.Text.Trim() != String.Empty)
+            {
+                // Selecionando numeros
+                resultadoTextBox.Text = analizadorObj.Selecionar_Numeros_Bonitos_Klingon(textoSelecionadoTextBox.Text);
+
+                // Informando tipo de analize
+                resultadoLabel.Text = "Resultado do Teste de: NÚMEROS BONITOS";
+
+                // Informando resultado
+                textoSelecionadoLabel.Text = "Texto Selecionado:" + textoKlingonOpenFileDialog.SafeFileName;
+            }
+            else
+            {
+                //executa menssagem
+                DialogResult FinalizarSistema = MessageBox.Show("Selecione um texto!", "Informacao!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                selecaoTextoButton.Focus();
+            }
         }
 
         private void LimparButton_Click(object sender, EventArgs e)
@@ -111,5 +189,6 @@ namespace AnalizadorKlingon
         }
 
         #endregion
+
     }
 }
